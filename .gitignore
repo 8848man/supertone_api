@@ -25,6 +25,14 @@ go.work
 .env.production
 *.env
 
+# Security and secrets files
+config/secrets/
+config/secrets.yaml
+config/secrets.yml
+config/secrets/*.json
+secrets/ 
+/pkgconfig/
+
 # IDE and editor files
 .vscode/
 .idea/
@@ -57,3 +65,4 @@ dist/
 config/secrets.yaml
 config/secrets.yml
 secrets/ 
+/pkgconfig/

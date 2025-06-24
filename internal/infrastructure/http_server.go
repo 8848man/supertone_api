@@ -3,6 +3,7 @@ package infrastructure
 import (
 	"fmt"
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 	"tts_proxy/internal/interface/handler"
 	"tts_proxy/internal/interface/middleware"
 )
@@ -19,6 +20,9 @@ type HTTPServer struct {
 
 func NewHTTPServer(cfg ServerConfig, ttsHandler *handler.TTSHandler, authMiddleware *middleware.AuthMiddleware) *HTTPServer {
 	app := fiber.New()
+
+	// CORS 허용
+	app.Use(cors.New())
 
 	// 인증 미들웨어(목업) - 향후 확장
 	app.Use(authMiddleware.Handle)

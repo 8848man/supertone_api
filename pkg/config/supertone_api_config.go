@@ -22,10 +22,23 @@ type TTSAPIConfig struct {
 
 // SupertoneConfig는 Supertone API 전용 설정을 반환합니다.
 func SupertoneConfig() *TTSAPIConfig {
+	// 보안 파일에서 API 키와 URL을 읽기
+	apiKey, err := GetSupertoneAPIKey()
+	if err != nil {
+		// 폴백: 환경 변수 사용
+		apiKey = getEnvOrDefault("SUPERTONE_API_KEY", "")
+	}
+	
+	apiURL, err := GetSupertoneAPIURL()
+	if err != nil {
+		// 폴백: 환경 변수 사용
+		apiURL = getEnvOrDefault("SUPERTONE_API_URL", "https://supertoneapi.com")
+	}
+
 	return &TTSAPIConfig{
 		Provider: SupertoneProvider,
-		APIURL:   getEnvOrDefault("SUPERTONE_API_URL", "https://supertoneapi.com"),
-		APIKey:   getEnvOrDefault("SUPERTONE_API_KEY", "5ccd5ef313ccb9aa15795df6a1c03fd8"),
+		APIURL:   apiURL,
+		APIKey:   apiKey,
 		Timeout:  30, // 30초
 		Retries:  3,
 	}
