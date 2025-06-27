@@ -66,7 +66,7 @@ TTS_PROVIDER=supertone
 
 # Supertone API Configuration
 SUPERTONE_API_URL=https://supertoneapi.com
-SUPERTONE_API_KEY=5ccd5ef313ccb9aa15795df6a1c03fd8
+SUPERTONE_API_KEY=**************************
 ```
 
 ### 기본 설정
@@ -76,7 +76,7 @@ SUPERTONE_API_KEY=5ccd5ef313ccb9aa15795df6a1c03fd8
 - **Full API Path**: `/api/v1/tts/:voiceId`
 - **TTS Provider**: Supertone (기본값)
 - **API URL**: https://supertoneapi.com
-- **API Key**: 5ccd5ef313ccb9aa15795df6a1c03fd8
+- **API Key**: **************************
 
 ## 빌드 및 실행
 ```bash
