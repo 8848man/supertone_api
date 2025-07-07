@@ -92,7 +92,7 @@ go test ./...
 
 ### TTS 변환 요청 (Supertone API 스펙)
 ```bash
-curl -X POST http://localhost:8080/api/v1/tts/91992bbd4758bdcf9c9b01 \
+curl -X POST http://localhost:8080/api/v1/tts/{apiKey} \
   -H "Content-Type: application/json" \
   -d '{
     "text": "안녕하세요, 수퍼톤 API입니다.",
