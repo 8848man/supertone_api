@@ -23,7 +23,7 @@ graph TB
     API --> Supertone[Supertone API]
     
     subgraph "Security Layers(구현 예정)"
-        Auth[]
+        Auth
         Proxy --> Auth
         Auth --> RateLimit
         RateLimit --> Validation
