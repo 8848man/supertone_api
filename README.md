@@ -18,17 +18,17 @@
 ## 아키텍쳐
 ```mermaid
 graph TB
-    Client[Client Applications] --> Hosting[Render Hosting] --> Nginx[Nginx Reverse Proxy]
-    Nginx --> API[Go Supertone API Server]
+    Client[Client Applications] --> Hosting[Render Hosting] --> Proxy[TTS Proxy]
+    Proxy --> API[Go Supertone API Server]
     API --> Supertone[Supertone API]
     
     subgraph "Security Layers"
         Auth[미구현]
-    end
     
     Nginx --> Auth
     Auth --> RateLimit
     RateLimit --> Validation
+    end
 ```
 
 ## 주요 기능 (v1)
