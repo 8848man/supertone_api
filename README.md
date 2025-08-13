@@ -22,12 +22,11 @@ graph TB
     Proxy --> API[Go Supertone API Server]
     API --> Supertone[Supertone API]
     
-    subgraph "Security Layers"
-        Auth[미구현]
-    
-    Nginx --> Auth
-    Auth --> RateLimit
-    RateLimit --> Validation
+    subgraph "Security Layers(구현 예정)"
+        Auth[]
+        Proxy --> Auth
+        Auth --> RateLimit
+        RateLimit --> Validation
     end
 ```
 
