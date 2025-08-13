@@ -1,8 +1,35 @@
 # TTS Proxy Server (Go)
 
+## 목차
+1. 프로젝트 목적
+2. 아키텍쳐
+3. 주요 기능
+4. 확장 고려사항
+5. 설계 원칙
+6. 패키지 구조 예시
+7. 환경 설정
+8. API 사용법
+9. 라우팅 구조
+
 ## 프로젝트 목적
 - 외부 TTS(Text-to-Speech) API(Supertone 등)를 중계하는 프록시 서버
 - 클라이언트가 텍스트 데이터를 POST로 요청하면, 외부 TTS API에 전달 후 응답받은 오디오(MP3)를 반환
+
+## 아키텍쳐
+```mermaid
+graph TB
+    Client[Client Applications] --> Hosting[Render Hosting] --> Nginx[Nginx Reverse Proxy]
+    Nginx --> API[Go Supertone API Server]
+    API --> Supertone[Supertone API]
+    
+    subgraph "Security Layers"
+        Auth[미구현]
+    end
+    
+    Nginx --> Auth
+    Auth --> RateLimit
+    RateLimit --> Validation
+```
 
 ## 주요 기능 (v1)
 - `/api/v1/tts/:voiceId` 엔드포인트: `text`, `language`, `style`, `model`, `voice_settings` 등 JSON POST
