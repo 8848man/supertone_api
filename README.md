@@ -19,12 +19,12 @@
 ```mermaid
 graph TB
     Client[Client Applications] --> Hosting[Render Hosting] --> Proxy[TTS Proxy]
-    Proxy[TTS Proxy] --> API[Go Supertone API Server]
+    Proxy --> API[Go Supertone API Server]
     API --> Supertone[Supertone API]
+    Proxy --> Auth
     
     subgraph "Security Layers(구현 예정)"
         
-        Proxy --> Auth
         Auth --> RateLimit
         RateLimit --> Validation
     end
